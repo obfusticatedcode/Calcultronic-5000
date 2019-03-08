@@ -2,7 +2,8 @@
 
 :root {
   /* background colors */
-  --calculator-background-color: #1d1f1f;
+  --calculator-background-color: #696969;
+  --display-background-color: #1d1f1f;
   /* font */
   --main-font: "Orbitron", sans-serif;
   /* font colors */
