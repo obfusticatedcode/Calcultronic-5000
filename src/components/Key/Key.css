@@ -1,0 +1,46 @@
+.Key__container {
+  align-items: center;
+  display: flex;
+  height: 25%;
+  justify-content: center;
+  transition: background-color 0.3s linear;
+}
+
+.Key__container:hover {
+  cursor: pointer;
+}
+
+.Key__operatorKey {
+  background-color: var(--action-key-color);
+  width: 100%;
+}
+
+.Key__operatorKey:hover {
+  background-color: var(--action-key-color-hover);
+}
+
+.Key__numberKey {
+  background-color: var(--number-key-color);
+  width: calc(100% / 3);
+}
+
+.Key__numberKey:hover {
+  background-color: var(--number-key-color-hover);
+}
+
+.Key__submitKey {
+  background-color: var(--submit-key-color);
+  height: 100%;
+  width: 100%;
+}
+
+.Key__submitKey:hover {
+  background-color: var(--submit-key-color-hover);
+}
+
+.Key__value {
+  color: var(--key-text-color);
+  font-family: var(--main-font);
+  font-size: var(--key-text-size);
+  font-weight: var(--key-text-weight);
+}

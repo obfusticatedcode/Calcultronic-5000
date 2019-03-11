@@ -1,0 +1,32 @@
+.Keypad__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: var(--keypad-height);
+  padding: 2%;
+  width: var(--keypad-width);
+}
+
+.Keypad__numbersContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: var(--number-height);
+  width: var(--number-width);
+}
+
+.Keypad__operatorsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 25%;
+}
+
+.Keypad__submitContainer {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--submit-key-color);
+}
