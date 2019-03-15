@@ -4,8 +4,10 @@ import "./Key.css";
 
 const Key = props => {
   const { keyAction, keyType, keyValue } = props;
+  const handleClick = () => keyAction(keyValue);
+
   return (
-    <div className="Key__container">
+    <div className={`Key__container ${keyType}`} onClick={handleClick}>
       <p className="Key__value">{keyValue}</p>
     </div>
   );

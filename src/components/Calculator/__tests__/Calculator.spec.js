@@ -1,10 +1,11 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import Calculator from "../Calculator";
 import Display from "../../Display/Display";
 import Keypad from "../../Keypad/Keypad";
 
 const setup = (props = {}) => shallow(<Calculator {...props} />);
+const mountedSetup = (props = {}) => mount(<Calculator {...props} />);
 
 describe("<Calculator></Calculator>", () => {
   let wrapper = null;
@@ -31,5 +32,125 @@ describe("<Calculator></Calculator>", () => {
 
   it("should render correctly", () => {
     expect(wrapper).toMatchSnapshot();
+  });
+});
+
+describe("mounted <Calculator/>", () => {
+  let wrapper = null;
+  beforeEach(() => (wrapper = mountedSetup({})));
+
+  it("should call updateDisplay() when a number key is clicked", () => {
+    const spy = jest.spyOn(wrapper.instance(), "updateDisplay");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(".Key__numberKey")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call setOperator() when a number key is clicked", () => {
+    const spy = jest.spyOn(wrapper.instance(), "setOperator");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(".Key__operatorKey")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call updateDisplay() when a number key is clicked", () => {
+    const spy = jest.spyOn(wrapper.instance(), "updateDisplay");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(".Key__numberKey")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call callOperator() when a number key is clicked", () => {
+    const spy = jest.spyOn(wrapper.instance(), "callOperator");
+    wrapper.instance().forceUpdate();
+    expect(spy).toHaveBeenCalledTimes(0);
+    wrapper
+      .find(".Key__submitKey")
+      .first()
+      .simulate("click");
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("updateDisplay()", () => {
+  let wrapper = null;
+  beforeEach(() => (wrapper = setup()));
+  it("should update displayValue", () => {
+    wrapper.instance().updateDisplay("5");
+    expect(wrapper.state("displayValue")).toEqual("5");
+  });
+
+  it("should concatenate displayValue", () => {
+    wrapper.instance().updateDisplay("5");
+    wrapper.instance().updateDisplay("0");
+    expect(wrapper.state("displayValue")).toEqual("50");
+  });
+
+  it("should remove leading `0` from displayValue", () => {
+    wrapper.instance().updateDisplay("0");
+    expect(wrapper.state("displayValue")).toEqual("0");
+    wrapper.instance().updateDisplay("5");
+    expect(wrapper.state("displayValue")).toEqual("5");
+  });
+
+  it("should prevent multiple leading `0`s from displayValue", () => {
+    wrapper.instance().updateDisplay("0");
+    wrapper.instance().updateDisplay("0");
+    expect(wrapper.state("displayValue")).toEqual("0");
+  });
+
+  it("should remove last character from displayValue", () => {
+    wrapper.instance().updateDisplay("5");
+    wrapper.instance().updateDisplay("0");
+    wrapper.instance().updateDisplay("ce");
+    expect(wrapper.state("displayValue")).toEqual("5");
+  });
+
+  it("should prevent multiple instances of `.` in displayValue", () => {
+    wrapper.instance().updateDisplay(".");
+    wrapper.instance().updateDisplay(".");
+    expect(wrapper.state("displayValue")).toEqual(".");
+  });
+
+  it("will set displayValue to `0` if displayValue is equal to an empty string", () => {
+    wrapper.instance().updateDisplay("ce");
+    expect(wrapper.state("displayValue")).toEqual("0");
+  });
+});
+
+describe("setOperator", () => {
+  let wrapper = null;
+  beforeEach(() => (wrapper = setup({})));
+  it("should update the value of selectedOperator", () => {
+    wrapper.instance().setOperator("+");
+    expect(wrapper.state("selectedOperator")).toEqual("+");
+    wrapper.instance().setOperator("/");
+    expect(wrapper.state("selectedOperator")).toEqual("/");
+  });
+
+  it("should update the value of storedValue to the value of the displayValue", () => {
+    wrapper.setState({ displayValue: "5" });
+    wrapper.instance().setOperator("+");
+    expect(wrapper.state("storedValue")).toEqual("5");
+  });
+
+  it("selectedOperator is NOT an empty string, does not update storedValue", () => {
+    wrapper.setState({ displayValue: "5" });
+    wrapper.instance().setOperator("+");
+    expect(wrapper.state("storedValue")).toEqual("5");
+    wrapper.instance().setOperator("-");
+    expect(wrapper.state("storedValue")).toEqual("5");
   });
 });

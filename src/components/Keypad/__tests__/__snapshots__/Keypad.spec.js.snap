@@ -44,7 +44,7 @@ ReactWrapper {
           class="Keypad__submitContainer"
         >
           <div
-            class="Key__container"
+            class="Key__container Key__submitKey"
           >
             <p
               class="Key__value"
@@ -69,7 +69,7 @@ ReactWrapper {
           >
             <Key
               keyAction={[MockFunction]}
-              keyType="submit-key"
+              keyType="Key__submitKey"
               keyValue="="
             />
           </div>,
@@ -115,7 +115,7 @@ ReactWrapper {
             class="Keypad__submitContainer"
           >
             <div
-              class="Key__container"
+              class="Key__container Key__submitKey"
             >
               <p
                 class="Key__value"
@@ -129,7 +129,7 @@ ReactWrapper {
           "props": Object {
             "children": <Key
               keyAction={[MockFunction]}
-              keyType="submit-key"
+              keyType="Key__submitKey"
               keyValue="="
             />,
             "className": "Keypad__submitContainer",
@@ -142,13 +142,13 @@ ReactWrapper {
               "nodeType": "function",
               "props": Object {
                 "keyAction": [MockFunction],
-                "keyType": "submit-key",
+                "keyType": "Key__submitKey",
                 "keyValue": "=",
               },
               "ref": null,
               "rendered": Object {
                 "instance": <div
-                  class="Key__container"
+                  class="Key__container Key__submitKey"
                 >
                   <p
                     class="Key__value"
@@ -164,7 +164,8 @@ ReactWrapper {
                   >
                     =
                   </p>,
-                  "className": "Key__container",
+                  "className": "Key__container Key__submitKey",
+                  "onClick": [Function],
                 },
                 "ref": null,
                 "rendered": Array [
@@ -226,7 +227,7 @@ ReactWrapper {
             class="Keypad__submitContainer"
           >
             <div
-              class="Key__container"
+              class="Key__container Key__submitKey"
             >
               <p
                 class="Key__value"
@@ -251,7 +252,7 @@ ReactWrapper {
             >
               <Key
                 keyAction={[MockFunction]}
-                keyType="submit-key"
+                keyType="Key__submitKey"
                 keyValue="="
               />
             </div>,
@@ -297,7 +298,7 @@ ReactWrapper {
               class="Keypad__submitContainer"
             >
               <div
-                class="Key__container"
+                class="Key__container Key__submitKey"
               >
                 <p
                   class="Key__value"
@@ -311,7 +312,7 @@ ReactWrapper {
             "props": Object {
               "children": <Key
                 keyAction={[MockFunction]}
-                keyType="submit-key"
+                keyType="Key__submitKey"
                 keyValue="="
               />,
               "className": "Keypad__submitContainer",
@@ -324,13 +325,13 @@ ReactWrapper {
                 "nodeType": "function",
                 "props": Object {
                   "keyAction": [MockFunction],
-                  "keyType": "submit-key",
+                  "keyType": "Key__submitKey",
                   "keyValue": "=",
                 },
                 "ref": null,
                 "rendered": Object {
                   "instance": <div
-                    class="Key__container"
+                    class="Key__container Key__submitKey"
                   >
                     <p
                       class="Key__value"
@@ -346,7 +347,8 @@ ReactWrapper {
                     >
                       =
                     </p>,
-                    "className": "Key__container",
+                    "className": "Key__container Key__submitKey",
+                    "onClick": [Function],
                   },
                   "ref": null,
                   "rendered": Array [
